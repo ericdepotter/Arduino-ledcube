@@ -3,8 +3,8 @@
 #ifndef __LED_H_INCLUDED__
 #define __LED_H_INCLUDED__
 
-#include "pos.h";
-#include "cube.h";
+#include "pos.h"
+#include "cube.h"
 
 class Led {
   public:

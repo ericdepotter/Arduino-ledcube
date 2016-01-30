@@ -5,10 +5,10 @@
 
 #include "Delay.h"
 #include "LinkedList.h"
-#include "led.h"; 
-#include "plane.h";
-#include "pos.h";
-#include "cube.h";
+#include "led.h"
+#include "plane.h"
+#include "pos.h"
+#include "cube.h"
 
 
 enum Anchor {BotFrontLeft, BotFrontRight, BotBackLeft, BotBackRight,

@@ -3,7 +3,7 @@
 #ifndef __POS_H_INCLUDED__
 #define __POS_H_INCLUDED__
 
-#include <stdint.h>;
+#include <stdint.h>
  
 #define byte uint8_t
 

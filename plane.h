@@ -11,9 +11,9 @@
 
 #define DELAYTIME 200
 
-#include "LinkedList.h";
-#include "led.h";
-#include "cube.h";
+#include "LinkedList.h"
+#include "led.h"
+#include "cube.h"
 
 typedef void (*planeCallback)(byte, bool);
 typedef void (*diagonalCallback)(bool);

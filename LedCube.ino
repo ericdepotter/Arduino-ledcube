@@ -7,10 +7,10 @@
 #include <TimerOne.h>
 
 #include "cube.h"
-#include "led.h";
-#include "plane.h";
-#include "effects.h";
-#include "Delay.h";
+#include "led.h"
+#include "plane.h"
+#include "effects.h"
+#include "Delay.h"
 
 //boolean currentState[4][16] = {
 //{0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},

@@ -3,7 +3,7 @@
 #ifndef __CUBE_H_INCLUDED__
 #define __CUBE_H_INCLUDED__
 
-#include <stdint.h>;
+#include <stdint.h>
  
 #define CUBESIZE 4
 #define PLANESIZE CUBESIZE*CUBESIZE
