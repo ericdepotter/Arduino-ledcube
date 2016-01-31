@@ -98,14 +98,19 @@ AlternatingLed::AlternatingLed(xyz pos, bool on, xyz dir, xyz minv, xyz maxv) : 
   direction = dir;
   min = minv;
   max = maxv;
+
+  xyz moved = pos + dir;
+  if ( (moved.x > maxv.x || moved.y > maxv.y || moved.z > maxv.y) ||
+       (moved.x < minv.x || moved.y < minv.y || moved.z < minv.z) ) {
+    direction = direction.negate();
+  }
 }
 
 Position AlternatingLed::update() {
   Led::move(direction);
   
   if (position.getPos() == min || position.getPos() == max) {
-    xyz inverse = {-direction.x, -direction.y, -direction.z};
-    direction = inverse;
+    direction = direction.negate();
   }
   
   return position;
