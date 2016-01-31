@@ -1,4 +1,4 @@
-#include "led.h";
+#include "led.h"
 
 // Constructors //
 Led::Led() {
@@ -99,8 +99,8 @@ AlternatingLed::AlternatingLed(xyz pos, bool on, xyz dir, xyz minv, xyz maxv) : 
   min = minv;
   max = maxv;
 
-  xyz moved = pos + dir;
-  if ( (moved.x > maxv.x || moved.y > maxv.y || moved.z > maxv.y) ||
+  xyz moved = pos + dir;  
+  if ( (moved.x > maxv.x || moved.y > maxv.y || moved.z > maxv.z) ||
        (moved.x < minv.x || moved.y < minv.y || moved.z < minv.z) ) {
     direction = direction.negate();
   }
