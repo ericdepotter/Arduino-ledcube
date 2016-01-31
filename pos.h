@@ -17,8 +17,15 @@ struct xyz {
   }
 
   xyz operator - (const xyz v1) const {
-    xyz diff = { x - v1.x, y - v1.y, z - v1.z };
-    return diff;
+    return { x - v1.x, y - v1.y, z - v1.z };
+  }
+
+  xyz operator + (const xyz v1) const {
+    return { x + v1.x, y + v1.y, z + v1.z };
+  }
+
+  xyz negate() const {
+    return { -x, -y, -z };
   }
 };
 
