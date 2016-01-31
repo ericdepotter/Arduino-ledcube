@@ -32,12 +32,12 @@ int times = 0;
 void setup()
 {
   // set up LED pins as output (active HIGH)
-  for (byte pin=0; pin<PLANESIZE; pin++) {
+  for (byte pin = 0; pin < PLANESIZE; pin++) {
     pinMode(ledPin[pin], OUTPUT);
     digitalWrite(ledPin[pin], LOW);
   }
   // set up plane pins as outputs (active LOW)
-  for (byte pin=0; pin<CUBESIZE; pin++) {
+  for (byte pin = 0; pin < CUBESIZE; pin++) {
     pinMode(planePin[pin], OUTPUT);
     digitalWrite(planePin[pin], HIGH);
   }
@@ -50,15 +50,16 @@ void setup()
 
   Timer1.initialize(1000000/LEDFPS/CUBESIZE);
   Timer1.attachInterrupt(drawCube); // drawCube to run every 1000000/LEDFPS/CUBESIZE microseconds
+
+  diagnostics();
 }
 
-void loop() {  
+
+void loop() { 
   if (++times == 5) {
     times = 0;
     softwareReset();
   }
-  
-  diagnostics();
   
   emptyCube();
   delay(1000);  

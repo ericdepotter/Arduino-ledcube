@@ -1,4 +1,4 @@
-#include "effects.h";
+#include "effects.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include <Arduino.h>
@@ -8,15 +8,15 @@
 
 #include "Delay.h"
 #include "LinkedList.h"
-#include "led.h"; 
-#include "plane.h"; 
+#include "led.h"
+#include "plane.h" 
 
 void pieter(int time, int drawTime) {
   emptyCube();
   
   LinkedList<AlternatingLed*> leds = LinkedList<AlternatingLed*>();
   
-  for(byte x = 1; x < CUBESIZE-1;x++) {
+  for(byte x = 1; x < CUBESIZE-1; x++) {
     for(byte y = 1; y < CUBESIZE-1; y++) {
       xyz pos = {x, y, 0};
       xyz max = {x, y, CUBESIZE-1};
@@ -59,38 +59,30 @@ void pieter(int time, int drawTime) {
 void waveSine(int time, int drawTime) {
   emptyCube();
   
-  LinkedList<AlternatingLed*> leds = LinkedList<AlternatingLed*>();
+  byte currentIndex = 0;
   
-  for(byte x = 0; x < CUBESIZE-1; x++) {
-    xyz pos = {x, 0, x};
-    xyz min = {x, 0, 0};
-    xyz max = {x, 0, CUBESIZE-1};
-    leds.add(new AlternatingLed(pos, true, Direction::up, min, max));
-    
-    xyz pos1 = {x, CUBESIZE-1, CUBESIZE-1 - x};
-    xyz min1 = {x, CUBESIZE-1, 0};
-    xyz max1 = {x, CUBESIZE-1, CUBESIZE-1};
-    leds.add(new AlternatingLed(pos1, true, Direction::down, min1, max1));
+  AlternatingLed** leds = new AlternatingLed*[PLANESIZE];
+  
+  for (byte xAndY = 0; xAndY < CUBESIZE; xAndY++) {
+  	for (byte y = 0; y <= xAndY; y++) {
+      byte x = xAndY - y;
+  	  xyz pos = {x, y, xAndY};
+      xyz min = {x, y, 0};
+      xyz max = {x, y, CUBESIZE-1};
+
+      leds[currentIndex++] = new AlternatingLed(pos, true, Direction::up, min, max);
+  	}
   }
-  
-  xyz pos = {CUBESIZE-1, 0, CUBESIZE-1};
-  xyz min = {CUBESIZE-1, 0, 0};
-  leds.add(new AlternatingLed(pos, true, Direction::down, min, pos));
-  
-  xyz pos1 = {CUBESIZE-1, CUBESIZE-1, 0};
-  xyz max1 = {CUBESIZE-1, CUBESIZE-1, CUBESIZE-1};
-  leds.add(new AlternatingLed(pos1, true, Direction::up, pos1, max1));
-  
-  for(byte y = 1; y < CUBESIZE-1; y++) {
-    xyz pos = {0, y, y};
-    xyz min = {0, y, 0};
-    xyz max = {0, y, CUBESIZE-1};
-    leds.add(new AlternatingLed(pos, true, Direction::down, min, max));
-    
-    xyz pos1 = {CUBESIZE-1, y, CUBESIZE-1 - y};
-    xyz min1 = {CUBESIZE-1, y, 0};
-    xyz max1 = {CUBESIZE-1, y, CUBESIZE-1};
-    leds.add(new AlternatingLed(pos1, true, Direction::up, min1, max1));
+
+  for (byte xAndY = 0; xAndY < CUBESIZE - 1; xAndY++) {
+  	for (byte y = 0; y <= xAndY; y++) {
+      byte x = CUBESIZE - xAndY + y - 1;
+  	  xyz pos = {x, CUBESIZE - y - 1, xAndY};
+      xyz min = {x, CUBESIZE - y - 1, 0};
+      xyz max = {x, CUBESIZE - y - 1, CUBESIZE-1};
+
+      leds[currentIndex++] = new AlternatingLed(pos, true, Direction::down, min, max);
+  	}
   }
 
   NonBlockDelay timer;
@@ -99,14 +91,13 @@ void waveSine(int time, int drawTime) {
   while(!timer.timeout()) {
     drawState(drawTime);
     
-    for(byte i = 0; i < leds.size(); i++) {
-      leds.get(i)->update();
+    for(byte i = 0; i < PLANESIZE; i++) {
+      leds[i]->update();
     }
   }
   
-  for(byte i = 0; i < leds.size(); i++) {
-      delete leds.get(i);
-  }
+  delete[] leds;
+  leds = NULL;
 }
 
 

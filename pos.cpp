@@ -1,4 +1,4 @@
-#include "pos.h";
+#include "pos.h"
     
 /************
 ** Position *
