@@ -78,7 +78,7 @@ void loop() {
    
   emptyCube();
   delay(1000); 
-  pieter(30250);
+  upDownPlane(30250);
   
   emptyCube();
 //  for (int z = 0; z < CUBESIZE; z++) {
