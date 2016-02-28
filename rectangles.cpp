@@ -53,7 +53,7 @@ void rectangleEdges(byte size, Anchor anchor, bool state) {
   }
 }
 
-void rectangleEdges(int xsize, int ysize, int zsize, Position anchor, bool state) {
+void rectangleEdges(byte xsize, byte ysize, byte zsize, Position anchor, bool state) {
   xsize -= 1; ysize -= 1; zsize -= 1;
   
   if (anchor.getX() > CUBESIZE/2) {

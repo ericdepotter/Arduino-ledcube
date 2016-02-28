@@ -352,7 +352,7 @@ LinkedList<Led>* PlaneLeftTransformer::getLeds() {
 }
 
 xyz PlaneLeftTransformer::getDirection() {
-  return Direction::rght;
+  return Direction::right;
 }
 
 PlaneTransformer* PlaneLeftTransformer::getOppositePlaneTransformer() {
@@ -414,7 +414,7 @@ LinkedList<Led>* PlaneRightTransformer::getLeds() {
 }
 
 xyz PlaneRightTransformer::getDirection() {
-  return Direction::lft;
+  return Direction::left;
 }
 
 PlaneTransformer* PlaneRightTransformer::getOppositePlaneTransformer() {
@@ -538,7 +538,7 @@ LinkedList<Led>* PlaneBackTransformer::getLeds() {
 }
 
 xyz PlaneBackTransformer::getDirection() {
-  return Direction::fwd;
+  return Direction::forward;
 }
 
 PlaneTransformer* PlaneBackTransformer::getOppositePlaneTransformer() {

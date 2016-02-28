@@ -16,7 +16,7 @@ const Position anchorPositions[8] = {Position (0,0,0), Position (CUBESIZE-1,0,0)
 /* EFFECTS */
 void rectangleEdgesEffect(int = 400);
 void rectangleEdges(byte, Anchor, bool);
-void rectangleEdges(int, int, int, Position, bool);
+void rectangleEdges(byte, byte, byte, Position, bool);
 void rectangleEdges(Position, Position, bool);
 
 #endif

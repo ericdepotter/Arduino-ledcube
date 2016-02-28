@@ -7,5 +7,6 @@
 #include "rectangles.h"
 #include "upDownPlane.h"
 #include "waveSine.h"
+#include "snake.h"
 
 #endif

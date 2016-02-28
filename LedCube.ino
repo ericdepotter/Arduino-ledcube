@@ -51,12 +51,15 @@ void setup()
   Timer1.initialize(1000000/LEDFPS/CUBESIZE);
   Timer1.attachInterrupt(drawCube); // drawCube to run every 1000000/LEDFPS/CUBESIZE microseconds
 
-  diagnostics();
+//  diagnostics();
 }
 
 
-void loop() { 
-  if (++times == 5) {
+void loop() {
+  emptyCube();
+  delay(1000);  
+  snakeEffect(100000);
+  /*if (++times == 5) {
     times = 0;
     softwareReset();
   }
@@ -78,7 +81,7 @@ void loop() {
    
   emptyCube();
   delay(1000); 
-  upDownPlane(30250);
+  upDownPlane(30250);*/
   
   emptyCube();
 //  for (int z = 0; z < CUBESIZE; z++) {

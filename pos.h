@@ -4,8 +4,17 @@
 #define __POS_H_INCLUDED__
 
 #include <stdint.h>
+#include "cube.h"
+
+#if defined(ARDUINO) && ARDUINO >= 100
+#include <Arduino.h>
+#else
+#include <WProgram.h>
+#endif
  
 #define byte uint8_t
+//#define NUMBER_DIRECTIONS 26
+#define NUMBER_DIRECTIONS 6
 
 struct xyz {
   byte x;
@@ -30,15 +39,20 @@ struct xyz {
 };
 
 namespace Direction {
-  const xyz fwd  = {0,-1,0};
-  const xyz back = {0,1,0};
+  const xyz forward  = {0,-1,0};
+  const xyz back     = {0,1,0};
   
-  const xyz lft  = {-1,0,0};
-  const xyz rght = {1,0,0};
+  const xyz left     = {-1,0,0};
+  const xyz right    = {1,0,0};
   
-  const xyz up   = {0,0,1};
-  const xyz down = {0,0,-1};
+  const xyz up       = {0,0,1};
+  const xyz down     = {0,0,-1};
 }
+
+xyz* allDirections();
+
+xyz randomDirection();
+xyz randomValidDirection(xyz, xyz = {5, 5, 5});
 
 class Position {
   public:
@@ -60,5 +74,7 @@ class Position {
     
     void init(byte, byte, byte);
 };
+
+xyz randomPosition();
 
 #endif
